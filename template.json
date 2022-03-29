@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "vaults_key_vault_demo_123_name": {
-            "defaultValue": "key-vault-demo-123",
+            "defaultValue": "key-vault-databricks-demo-123",
             "type": "String"
         },
         "workflows_DatabricksTestDemo_name": {
