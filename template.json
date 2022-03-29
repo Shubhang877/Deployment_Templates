@@ -30,7 +30,7 @@
                 "name": "standard"
             },
             "properties": {
-                "managedResourceGroupId": "[concat('/subscriptions/9e6765dd-d7a6-4005-a6f1-403c90fae858/resourceGroups/databricks-rg-', parameters('workspaces_databricksdemo_name'), '-633sbqrl3rngc')]",
+                "managedResourceGroupId": "[concat('/subscriptions/b15ad7da-1f98-4751-859d-6093547b666c/resourceGroups/databricks-rg-', parameters('workspaces_databricksdemo_name'), '-633sbqrl3rngc')]",
                 "parameters": {
                     "enableNoPublicIp": {
                         "type": "Bool",
@@ -86,10 +86,10 @@
                     "family": "A",
                     "name": "standard"
                 },
-                "tenantId": "68dae849-71d7-44c1-aca2-0bd46e660d6a",
+                "tenantId": "923b33ef-f24d-4002-829e-6416a1fbdb5b",
                 "accessPolicies": [
                     {
-                        "tenantId": "68dae849-71d7-44c1-aca2-0bd46e660d6a",
+                        "tenantId": "923b33ef-f24d-4002-829e-6416a1fbdb5b",
                         "objectId": "9e910534-0155-4ffa-8d71-581a6185ec1e",
                         "permissions": {
                             "keys": [
@@ -135,7 +135,7 @@
                         }
                     },
                     {
-                        "tenantId": "68dae849-71d7-44c1-aca2-0bd46e660d6a",
+                        "tenantId": "923b33ef-f24d-4002-829e-6416a1fbdb5b",
                         "objectId": "98173dfe-b328-4c94-a59f-462fa4e648d6",
                         "permissions": {
                             "keys": [
@@ -181,7 +181,7 @@
                         }
                     },
                     {
-                        "tenantId": "68dae849-71d7-44c1-aca2-0bd46e660d6a",
+                        "tenantId": "923b33ef-f24d-4002-829e-6416a1fbdb5b",
                         "objectId": "fadf4243-3862-4027-9182-af87d50823c3",
                         "permissions": {
                             "secrets": [
