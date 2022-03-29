@@ -1,0 +1,308 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vaults_key_vault_demo_123_name": {
+            "defaultValue": "key-vault-demo-123",
+            "type": "String"
+        },
+        "workflows_DatabricksTestDemo_name": {
+            "defaultValue": "DatabricksTestDemo",
+            "type": "String"
+        },
+        "workspaces_databricksdemo_name": {
+            "defaultValue": "databricksdemo",
+            "type": "String"
+        },
+        "storageAccounts_databricksdemo123_name": {
+            "defaultValue": "databricksdemo123",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Databricks/workspaces",
+            "apiVersion": "2021-04-01-preview",
+            "name": "[parameters('workspaces_databricksdemo_name')]",
+            "location": "westus",
+            "sku": {
+                "name": "standard"
+            },
+            "properties": {
+                "managedResourceGroupId": "[concat('/subscriptions/9e6765dd-d7a6-4005-a6f1-403c90fae858/resourceGroups/databricks-rg-', parameters('workspaces_databricksdemo_name'), '-633sbqrl3rngc')]",
+                "parameters": {
+                    "enableNoPublicIp": {
+                        "type": "Bool",
+                        "value": false
+                    },
+                    "natGatewayName": {
+                        "type": "String",
+                        "value": "nat-gateway"
+                    },
+                    "prepareEncryption": {
+                        "type": "Bool",
+                        "value": false
+                    },
+                    "publicIpName": {
+                        "type": "String",
+                        "value": "nat-gw-public-ip"
+                    },
+                    "requireInfrastructureEncryption": {
+                        "type": "Bool",
+                        "value": false
+                    },
+                    "storageAccountName": {
+                        "type": "String",
+                        "value": "dbstorageit6pitl5ax246"
+                    },
+                    "storageAccountSkuName": {
+                        "type": "String",
+                        "value": "Standard_GRS"
+                    },
+                    "vnetAddressPrefix": {
+                        "type": "String",
+                        "value": "10.139"
+                    }
+                },
+                "authorizations": [
+                    {
+                        "principalId": "9a74af6f-d153-4348-988a-e2672920bee9",
+                        "roleDefinitionId": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635"
+                    }
+                ],
+                "createdBy": {},
+                "updatedBy": {},
+                "createdDateTime": "2022-02-20T02:01:13.74159Z"
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults",
+            "apiVersion": "2021-11-01-preview",
+            "name": "[parameters('vaults_key_vault_demo_123_name')]",
+            "location": "westus",
+            "properties": {
+                "sku": {
+                    "family": "A",
+                    "name": "standard"
+                },
+                "tenantId": "68dae849-71d7-44c1-aca2-0bd46e660d6a",
+                "accessPolicies": [
+                    {
+                        "tenantId": "68dae849-71d7-44c1-aca2-0bd46e660d6a",
+                        "objectId": "9e910534-0155-4ffa-8d71-581a6185ec1e",
+                        "permissions": {
+                            "keys": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore",
+                                "GetRotationPolicy",
+                                "SetRotationPolicy",
+                                "Rotate"
+                            ],
+                            "secrets": [
+                                "get",
+                                "list",
+                                "set",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore"
+                            ],
+                            "certificates": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore",
+                                "managecontacts",
+                                "manageissuers",
+                                "getissuers",
+                                "listissuers",
+                                "setissuers",
+                                "deleteissuers"
+                            ]
+                        }
+                    },
+                    {
+                        "tenantId": "68dae849-71d7-44c1-aca2-0bd46e660d6a",
+                        "objectId": "98173dfe-b328-4c94-a59f-462fa4e648d6",
+                        "permissions": {
+                            "keys": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore",
+                                "GetRotationPolicy",
+                                "SetRotationPolicy",
+                                "Rotate"
+                            ],
+                            "secrets": [
+                                "get",
+                                "list",
+                                "set",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore"
+                            ],
+                            "certificates": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore",
+                                "managecontacts",
+                                "manageissuers",
+                                "getissuers",
+                                "listissuers",
+                                "setissuers",
+                                "deleteissuers"
+                            ]
+                        }
+                    },
+                    {
+                        "tenantId": "68dae849-71d7-44c1-aca2-0bd46e660d6a",
+                        "objectId": "fadf4243-3862-4027-9182-af87d50823c3",
+                        "permissions": {
+                            "secrets": [
+                                "get",
+                                "list"
+                            ]
+                        }
+                    }
+                ],
+                "enabledForDeployment": false,
+                "enabledForDiskEncryption": false,
+                "enabledForTemplateDeployment": false,
+                "enableSoftDelete": true,
+                "softDeleteRetentionInDays": 90,
+                "enableRbacAuthorization": false,
+                "vaultUri": "[concat('https://', parameters('vaults_key_vault_demo_123_name'), '.vault.azure.net/')]",
+                "provisioningState": "Succeeded",
+                "publicNetworkAccess": "Enabled"
+            }
+        },
+        {
+            "type": "Microsoft.Logic/workflows",
+            "apiVersion": "2017-07-01",
+            "name": "[parameters('workflows_DatabricksTestDemo_name')]",
+            "location": "westus",
+            "properties": {
+                "state": "Suspended",
+                "definition": {
+                    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                    "contentVersion": "1.0.0.0",
+                    "parameters": {},
+                    "triggers": {},
+                    "actions": {},
+                    "outputs": {}
+                },
+                "parameters": {}
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2021-08-01",
+            "name": "[parameters('storageAccounts_databricksdemo123_name')]",
+            "location": "westus",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "kind": "StorageV2",
+            "properties": {
+                "defaultToOAuthAuthentication": false,
+                "allowCrossTenantReplication": false,
+                "isSftpEnabled": false,
+                "minimumTlsVersion": "TLS1_2",
+                "allowBlobPublicAccess": true,
+                "allowSharedKeyAccess": true,
+                "isHnsEnabled": true,
+                "networkAcls": {
+                    "bypass": "AzureServices",
+                    "virtualNetworkRules": [],
+                    "ipRules": [],
+                    "defaultAction": "Allow"
+                },
+                "supportsHttpsTrafficOnly": true,
+                "encryption": {
+                    "requireInfrastructureEncryption": false,
+                    "services": {
+                        "file": {
+                            "keyType": "Account",
+                            "enabled": true
+                        },
+                        "blob": {
+                            "keyType": "Account",
+                            "enabled": true
+                        }
+                    },
+                    "keySource": "Microsoft.Storage"
+                },
+                "accessTier": "Hot"
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "apiVersion": "2021-11-01-preview",
+            "name": "[concat(parameters('vaults_key_vault_demo_123_name'), '/databricks-sp-client-id')]",
+            "location": "westus",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('vaults_key_vault_demo_123_name'))]"
+            ],
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                }
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "apiVersion": "2021-11-01-preview",
+            "name": "[concat(parameters('vaults_key_vault_demo_123_name'), '/databricks-sp-client-secret')]",
+            "location": "westus",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('vaults_key_vault_demo_123_name'))]"
+            ],
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                }
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "apiVersion": "2021-11-01-preview",
+            "name": "[concat(parameters('vaults_key_vault_demo_123_name'), '/TenantId')]",
+            "location": "westus",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('vaults_key_vault_demo_123_name'))]"
+            ],
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                }
+            }
+        }
+    ]
+}

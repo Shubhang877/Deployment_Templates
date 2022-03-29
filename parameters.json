@@ -1,0 +1,18 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vaults_key_vault_demo_123_name": {
+            "value": null
+        },
+        "workflows_DatabricksTestDemo_name": {
+            "value": null
+        },
+        "workspaces_databricksdemo_name": {
+            "value": null
+        },
+        "storageAccounts_databricksdemo123_name": {
+            "value": null
+        }
+    }
+}
